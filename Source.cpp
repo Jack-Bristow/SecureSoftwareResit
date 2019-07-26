@@ -25,11 +25,11 @@ void startup()
     userObject.initialise();
 }
 
-const uint16_t MENUQUIT = 9;
+const uint8_t MENUQUIT = 9;
 
-uint16_t mainMenu()
+uint8_t mainMenu()
 {
-    uint16_t ui16_input;
+    uint8_t ui8_input;
     std::cout << "Welcome to the Weather Station\n";
     std::cout << "Select from the following options\n";
     std::cout << "---------------------------------\n";
@@ -39,19 +39,19 @@ uint16_t mainMenu()
     std::cout << "9: Quit\n\n";
     std::cout << "Your choice:";
     //std::cin >> ui16_input;
-    if (!(std::cin >> ui16_input))
+    if (!(std::cin >> ui8_input))
     {
         std::cin.clear();
         std::cin.ignore(UINT16_MAX, '\n');
         return 0;
     }
-    else if (ui16_input > MENUQUIT || ui16_input < 1)
+    else if (ui8_input > MENUQUIT || ui8_input < 1)
     {
         return 0;
     }
     else
     {
-        return ui16_input;
+        return ui8_input;
     }
 }
 
@@ -90,32 +90,32 @@ void logIn()
 
 void LoggerFunc()
 {
-    uint16_t ui16_loggerType, ui16_formatType;       // variable to store the input
+    uint8_t ui8_loggerType, ui8_formatType;       // variable to store the input
     bool log;
 
     std::cout << "SELECT LOGGER [1: TXT FILE, 2: CONSOLE, 3: BIN FILE] : ";
-    std::cin >> ui16_loggerType;
+    std::cin >> ui8_loggerType;
     std::cout << "\nSELECT FORMAT [1: NO FORMAT, 2: HTML, 3: ENCRYPT] : ";
-    std::cin >> ui16_formatType;
+    std::cin >> ui8_formatType;
     std::cout << "\nLogger: ";
 
     Logger *logger = nullptr;
 
-    switch (ui16_loggerType)
+    switch (ui8_loggerType)
     {
         case L_TEXT_FILE:
             std::cout << "Text File\n";
-            logger = new LoggerDecorator(new TxtFileLogger(), ui16_formatType);
+            logger = new LoggerDecorator(new TxtFileLogger(), ui8_formatType);
             log = true;
             break;
         case L_CONSOLE:
             std::cout << "Console\n";
-            logger = new LoggerDecorator(new ConsoleLogger(), ui16_formatType);
+            logger = new LoggerDecorator(new ConsoleLogger(), ui8_formatType);
             log = true;
             break;
         case L_BINARY_FILE:
             std::cout << "BIN File\n";
-            logger = new LoggerDecorator(new BinFileLogger(), ui16_formatType);
+            logger = new LoggerDecorator(new BinFileLogger(), ui8_formatType);
             log = true;
             break;
         default:
@@ -133,12 +133,12 @@ void LoggerFunc()
 int main()
 {
     startup();
-    uint16_t ui16_userChoice = 0;
-    while (ui16_userChoice != MENUQUIT)
+    uint8_t ui8_userChoice = 0;
+    while (ui8_userChoice != MENUQUIT)
     {
-        ui16_userChoice = mainMenu();
+        ui8_userChoice = mainMenu();
         std::cout << std::endl;
-        switch (ui16_userChoice) //does not need case for exit as if 9 is entered will never reach this point
+        switch (ui8_userChoice) //does not need case for exit as if 9 is entered will never reach this point
         {
             case 0:
                 std::cout << "ERROR\n";
@@ -155,6 +155,8 @@ int main()
                 break;
             case 4:
                 //checkPerm();
+                break;
+            default:
                 break;
         }
     }

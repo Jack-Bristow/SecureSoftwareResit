@@ -4,7 +4,7 @@
 
 #include "ResourceFactory.h"
 
-Resource* resourceFactory::accessResource(uint16_t resourceID, Role role, unsigned accessType)
+Resource* resourceFactory::accessResource(uint16_t resourceID, uint16_t role, unsigned accessType)
 {
     return Resource::newResource(resourceID, role, accessType);
 }

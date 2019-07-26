@@ -28,7 +28,7 @@ private:
     std::map<uint16_t, resources> roleResourceAccessMap;
 public:
     Permission();
-    bool checkPermission(uint16_t resourceID, unsigned role, unsigned accessType);
+    bool checkPermission(uint16_t resourceID, uint16_t role, unsigned accessType);
 };
 
 #endif //PERMISSION_H

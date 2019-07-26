@@ -17,9 +17,9 @@ void LoggerDecorator::log(std::string msg)
 
 std::string LoggerDecorator::encryptDecrypt(std::string toEncrypt)
 {
-    char key = 'X';
-    std::string output = toEncrypt;
-    for (uint16_t i = 0; i < toEncrypt.size(); i++)
+    uint8_t key = 'X';
+    std::string output;
+    for (uint64_t i = 0; i < toEncrypt.size(); i++)
     {
         output[i] = toEncrypt[i] ^ key;
     }
@@ -34,18 +34,14 @@ std::string LoggerDecorator::formatMessage(std::string msg)
         case NO_FORMAT:
             std::cout << "No format!\n";
             return msg;
-            break;
         case HTML_FORMAT:
             std::cout << "HTML\n";
             return "<HTML><BODY> <b>" + msg + "</b> </BODY></HTML>";
-            break;
         case ENC_FORMAT:
             std::cout << "ENCRYPT\n";
             return encryptDecrypt(msg);
-            break;
         default:
             std::cout << "Unknown format\n";
             return msg;
-            break;
     }
 }

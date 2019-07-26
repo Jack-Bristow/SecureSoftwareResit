@@ -10,7 +10,7 @@
 class resourceFactory
 {
 public:
-    Resource* accessResource(uint16_t resourceID, Role role, unsigned accessType);
+    static Resource* accessResource(uint16_t resourceID, uint16_t role, unsigned accessType);
 };
 
 #endif //RESOURCEFACTORY_H

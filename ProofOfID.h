@@ -12,7 +12,7 @@ private:
     std::string proofID;
 public:
     ProofOfID();
-    ProofOfID(std::string);
+    explicit ProofOfID(std::string);
     std::string getproofID();
     void setproofID(std::string);
 };

@@ -6,7 +6,7 @@
 #include "ResourceFactory.h"
 #include <iostream>
 
-Subject::Subject(std::string aID, std::string pass) : id(aID), password(pass)
+Subject::Subject(std::string aID, std::string pass) : id(std::move(aID)), password(std::move(pass))
 {
     proofID = "";
 }
@@ -42,7 +42,7 @@ std::string Subject::getPassword()
 
 void Subject::setproofofID(std::string proof)
 {
-    proofID = proof;
+    proofID = std::move(proof);
 }
 
 std::string Subject::getproofofID()
@@ -50,15 +50,16 @@ std::string Subject::getproofofID()
     return proofID;
 }
 
-Role Subject::getRole()
+uint16_t Subject::getRole()
 {
     return role;
 }
 
 Resource* Subject::getResource(uint16_t resourceID, unsigned accessType)
 {
-    resourceFactory *rf = new resourceFactory();
-    r = rf->accessResource(resourceID, role, accessType);
+    resourceFactory *rf;
+    rf = new resourceFactory();
+    r = resourceFactory::accessResource(resourceID, role, accessType);
     delete rf;
     return r;
 }

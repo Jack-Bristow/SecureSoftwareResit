@@ -6,10 +6,9 @@
 #include <string>
 
 ProofOfID::ProofOfID()
-{
-}
+= default;
 
-ProofOfID::ProofOfID(std::string aproofID) : proofID(aproofID)
+ProofOfID::ProofOfID(std::string aproofID) : proofID(std::move(aproofID))
 {
 }
 
@@ -20,5 +19,5 @@ std::string ProofOfID::getproofID()
 
 void ProofOfID::setproofID(std::string aproofID)
 {
-    proofID = aproofID;
+    proofID = std::move(aproofID);
 }

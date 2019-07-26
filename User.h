@@ -4,13 +4,14 @@
 
 #ifndef USER_H
 #define USER_H
+#include <map>
 
 class User
 {
 public:
     void initialise();
-    bool isAdmin();
-    void authenticate();
+    static bool isAdmin();
+    static void authenticate();
 private:
     uint16_t ui16_permissionLevel;
 };

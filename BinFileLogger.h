@@ -10,7 +10,7 @@
 class BinFileLogger : public Logger
 {
 public:
-    void log(std::string msg);
+    void log(std::string msg) override;
 };
 
 #endif //BINFILELOGGER_H

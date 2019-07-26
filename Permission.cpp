@@ -4,7 +4,6 @@
 
 #include "Permission.h"
 #include "Role.h"
-#include <iostream>
 
 Permission::Permission()
 {
@@ -13,14 +12,7 @@ Permission::Permission()
     roleResourceAccessMap[2] = { NA, R, R|W, R, NA, R }; //Test 2
 }
 
-bool Permission::checkPermission(uint16_t resourceID, unsigned role, unsigned accessType)
+bool Permission::checkPermission(uint16_t resourceID, uint16_t role, unsigned accessType)
 {
-    if (roleResourceAccessMap[role].at(resourceID) & accessType)
-    {
-        return true;
-    }
-    else
-    {
-        return false;
-    }
+    return (roleResourceAccessMap[role].at(resourceID) & accessType) != 0;
 }

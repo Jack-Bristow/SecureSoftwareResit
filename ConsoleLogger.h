@@ -10,7 +10,7 @@
 class ConsoleLogger : public Logger
 {
 public:
-    void log(std::string msg);
+    void log(std::string msg) override;
 };
 
 #endif //CONSOLELOGGER_H

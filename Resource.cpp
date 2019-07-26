@@ -12,7 +12,7 @@ Resource::Resource(uint16_t a) : ui16_id(a)
     secret = "bla bla bla";
 }
 
-Resource* Resource::newResource(uint16_t resourceID, unsigned role, unsigned accessType)
+Resource* Resource::newResource(uint16_t resourceID, uint16_t role, unsigned accessType)
 {
     Permission p = Permission();
     if (p.checkPermission(resourceID, role, accessType))

@@ -12,8 +12,8 @@ class LoggerDecorator : public Logger
 {
     unsigned formatType;
     Logger *contents;
-    void log(std::string msg);
-    std::string encryptDecrypt(std::string toEncrypt);
+    void log(std::string msg) override;
+    static std::string encryptDecrypt(std::string toEncrypt);
 public:
     LoggerDecorator(Logger *contents, unsigned formatType);
     virtual std::string formatMessage(std::string msg);

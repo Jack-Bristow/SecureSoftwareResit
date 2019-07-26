@@ -14,7 +14,7 @@ public:
     Authenticator();
     ProofOfID * authenticateUser(Subject &s);
 private:
-    std::string encryptDecrypt(std::string toEncrypt);
+    static std::string encryptDecrypt(std::string toEncrypt);
 };
 
 #endif //AUTHENTICATOR_H

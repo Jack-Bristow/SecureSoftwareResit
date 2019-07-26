@@ -10,7 +10,7 @@
 class TxtFileLogger : public Logger
 {
 public:
-    void log(std::string msg);
+    void log(std::string msg) override;
 };
 
 #endif // TXTFILELOGGER_H

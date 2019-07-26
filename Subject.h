@@ -16,17 +16,17 @@ private:
     std::string password;
     std::string proofID;
     Resource* r;
-    Role role;
+    uint16_t role;
 public:
     Subject(std::string aID, std::string pass);
-    Subject(uint16_t a);
+    explicit Subject(uint16_t a);
     Subject();
     std::string getId();
     uint16_t getId2();
     std::string getPassword();
     void setproofofID(std::string proof);
     std::string getproofofID();
-    Role getRole();
+    uint16_t getRole();
     Resource* getResource(uint16_t resourceID, unsigned accessType);
 };
 

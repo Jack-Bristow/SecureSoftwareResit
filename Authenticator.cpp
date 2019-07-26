@@ -9,8 +9,7 @@
 #include <iostream>
 
 Authenticator::Authenticator()
-{
-}
+= default;
 
 ProofOfID * Authenticator::authenticateUser(Subject &s)
 {
@@ -18,7 +17,7 @@ ProofOfID * Authenticator::authenticateUser(Subject &s)
     ProofOfID *proofofID = nullptr;
     std::string Id = s.getId();
     std::string pass = s.getPassword();
-    std::string token = "";
+    std::string token;
     if (ainfo.validateUser(Id, pass))
     {
         std::cout << "Welcome!\n";
@@ -36,9 +35,9 @@ ProofOfID * Authenticator::authenticateUser(Subject &s)
 
 std::string Authenticator::encryptDecrypt(std::string toEncrypt)
 {
-    char key = 'X';
+    uint8_t key = 'X';
     std::string output = toEncrypt;
-    for (uint16_t i = 0; i < toEncrypt.size(); i++)
+    for (uint64_t i = 0; i < toEncrypt.size(); i++)
     {
         output[i] = toEncrypt[i] ^ key;
     }
